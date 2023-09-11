@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  auth_db:
+    image: mongo:4.4.10
+    container_name: auth_db_unworkout
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${AUTH_DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${AUTH_DB_PASSWORD}
+    ports:
+      - '27017:27017'
+    volumes:
+      - auth_data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    container_name: auth_db_mongo_express
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${AUTH_DB_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${AUTH_DB_PASSWORD}
+      - ME_CONFIG_MONGODB_URL=${AUTH_DB_URL}
+      - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
+    depends_on:
+      - auth_db
+    ports:
+      - '8082:8081'
+
+  
+
+volumes:
+  auth_data: null
