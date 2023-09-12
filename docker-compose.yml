@@ -1,6 +1,16 @@
 version: '3.4'
 
 services:
+  auth_ms:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: auth_ms_unworkout
+    env_file: .env
+    volumes:
+      - .:/code
+    ports:
+      - "8002:8000"
   auth_db:
     image: mongo:4.4.10
     container_name: auth_db_unworkout

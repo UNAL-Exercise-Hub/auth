@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware'
 ]
 
-ROOT_URLCONF = 'auth_ms.urls'
+ROOT_URLCONF = 'AuthenticationApp.urls'
 
 TEMPLATES = [
     {
@@ -81,7 +81,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'CLIENT': {
-            'host': 'mongodb://4jcarquisoft:arquisoft4jc@localhost:27017/',
+            'host': 'mongodb://4jcarquisoft:arquisoft4jc@auth_db:27017/',
+            #'host': 'mongodb://4jcarquisoft:arquisoft4jc@localhost:27017/',
             'name': 'auth_db',
             'authMechanism': 'SCRAM-SHA-1'
         } 
