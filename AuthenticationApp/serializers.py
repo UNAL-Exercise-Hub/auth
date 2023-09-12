@@ -14,5 +14,3 @@ class LoginSerializer(serializers.ModelSerializer):
         data['UserPasswordHash'] = make_password(data['UserPasswordHash'])
         return super(LoginSerializer, self).create(data)
     
-    def validate(self, data):
-        if(data['UserPasswordHash'] in )
