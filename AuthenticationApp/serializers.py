@@ -13,4 +13,4 @@ class LoginSerializer(serializers.ModelSerializer):
     def create(self, data):
         data['UserPasswordHash'] = make_password(data['UserPasswordHash'])
         return super(LoginSerializer, self).create(data)
-    
+
