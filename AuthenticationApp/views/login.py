@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from .models import Login
-from .serializers import LoginSerializer
+from AuthenticationApp.models import Login
+from AuthenticationApp.serializers import LoginSerializer
 
 class LoginViewSet(viewsets.ModelViewSet):
     queryset = Login.objects.all()

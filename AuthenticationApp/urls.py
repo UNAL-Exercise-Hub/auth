@@ -2,9 +2,10 @@ from django.urls import include, path
 
 # Django REST Framework
 from rest_framework.routers import DefaultRouter
-from rest_framework_simplejwt import views as jwt_views
+from .views.token import login
+from .views.token import whoAmI
 
-from .views import LoginViewSet
+from .views.login import LoginViewSet
 
 
 ROUTER = DefaultRouter()
@@ -18,6 +19,6 @@ ROUTER.register(
 
 urlpatterns = [
     path('', include(ROUTER.urls)),
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('token', login),
+    path('verifytoken', whoAmI)
 ]
